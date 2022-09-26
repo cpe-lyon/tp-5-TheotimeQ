@@ -150,9 +150,47 @@ User@localhost:~$ sudo lvscan
 
 ## 6. Dans ce volume logique, créez une partition que vous formaterez en ext4, puis procédez comme dans l’exercice 1 pour qu’elle soit montée automatiquement, au démarrage de la machine, dans /data.
 
+On creer la partition : 
+
+```console
+User@localhost:~$ sudo fdisk /dev/mapper/VG_new-lvData
+```
+
+![](/TP5/IMG_12.png)
+
+On formate la partition en ext4 :
+
+```console
+User@localhost:~$ sudo mkfs.ext4 /dev/mapper/VG_new-lvData
+```
+
+![](/TP5/IMG_13.png)
+
+On edite le fichier `etc/fstab`
+On ajoute la ligne : `/dev/mapper/VG_new-lvData /data2 ext4 defaults 0 0  `
+
+On recharge fstab
+
+```console
+User@localhost:~$ sudo mount -a
+```
+![](/TP5/IMG_14.png)
+
+On verifi avec `df -T`
+
+![](/TP5/IMG_14.png)
+
 ## 7. Eteignez la VM pour ajouter un second disque (peu importe la taille pour cet exercice). Redémarrez la VM, vérifiez que le disque est bien présent. Puis, répétez les questions 2 et 3 sur ce nouveau disque.
+
+Apres redemarage de la vm , on verifie avec `lsblk`
+On refait les questions 2 et  3 sur le nouveau disque
 
 ## 8. Utilisez la commande vgextend <nom_vg> <nom_pv> pour ajouter le nouveau disque au groupe de volumes
 
+
+
 ## 9. Utilisez la commande lvresize (ou lvextend) pour agrandir le volume logique. Enfin, il ne faut pas oublier de redimensionner le système de fichiers à l’aide de la commande resize2fs.
+
+
+
 
