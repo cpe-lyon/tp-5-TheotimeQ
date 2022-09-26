@@ -74,12 +74,6 @@ User@localhost:~$ sudo mount /dev/usb  /data1
 
 Impossible sur VSPHERE .
 
-
-
-
-
-
-
 # Exercice 2. Partitionnement LVM  <a id='Anch2'></a>
 
 Dans cet exercice, nous allons aborder le partitionnement LVM, beaucoup plus flexible pour manipuler
@@ -87,29 +81,40 @@ les disques et les partitions.
 
 ## 1. On va réutiliser le disque de 5 Gio de l’exercice précédent. Commencez par démonter les systèmes de fichiers montés dans /data et /win s’ils sont encore montés, et supprimez les lignes correspondantes du fichier /etc/fstab
 
-sudo umount /data1
-sudo umount /data
-sudo umount /win
-sudo nano /etc/fstab
-
+On demonte les disques , puis on edite le fichier fstab et on supprime les lignes ajoutées.
+```console
+User@localhost:~$ sudo umount /data
+User@localhost:~$ sudo umount /win
+User@localhost:~$ sudo nano /etc/fstab
+```
 
 ## 2. Supprimez les deux partitions du disque, et créez une partition unique de type LVM
 
-sudo fdisk /dev/sdb
-d
-1
-d
 
-n
-p
-1
-8e
-w
+On supprime les volumes fait precedemments 
+
+```console
+User@localhost:~$ sudo fdisk /dev/sdb
+```
+
+![](/TP5/IMG_6.png)
+
+Pour creer le LVM ( Logical Volume Manager ) , on lui donne le type "8"
+
+![](/TP5/IMG_7.png)
 
 ## 3. A l’aide de la commande pvcreate, créez un volume physique LVM. Validez qu’il est bien créé, en utilisant la commande pvdisplay.
 
-sudo pvcreate PV /dev/sdb1
-pvdisplay
+On fait un `man pvcreate` pour regarder comment ca fonctionne.
+Cette commande sert a initialiser des volume physique en LVM
+On fait donc : 
+
+```console
+User@localhost:~$ sudo pvcreate PV /dev/sdb1
+User@localhost:~$ sudo pvdisplay
+```
+
+![](/TP5/IMG_8.png)
 
 ## 4. A l’aide de la commande vgcreate, créez un groupe de volumes, qui pour l’instant ne contiendra que le volume physique créé à l’étape précédente. Vérifiez à l’aide de la commande vgdisplay
 
