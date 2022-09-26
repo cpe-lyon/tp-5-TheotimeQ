@@ -18,7 +18,7 @@
 User@localhost:~$ lsblk
 ```
 
-![](/TP5/IMG_2.png)
+![](/TP5/IMG_3.png)
 
 ## 3. Partitionnez ce disque en utilisant fdisk : créez une première partition de 2 Go de type Linux (n°83),et une seconde partition de 3 Go en NTFS (n°7)
 
@@ -26,7 +26,7 @@ User@localhost:~$ lsblk
 User@localhost:~$ sudo fdisk /dev/sdb
 ```
 
-![](/TP5/IMG_3.png)
+![](/TP5/IMG_2.png)
 
 ## 4. A ce stade, les partitions ont été créées, mais elles n’ont pas été formatées avec leur système de fichiers. A l’aide de la commande mkfs, formatez vos deux partitions ( pensez à consulter le manuel !)
 
@@ -174,11 +174,10 @@ On recharge fstab
 ```console
 User@localhost:~$ sudo mount -a
 ```
-![](/TP5/IMG_14.png)
 
 On verifi avec `df -T`
-
 ![](/TP5/IMG_14.png)
+
 
 ## 7. Eteignez la VM pour ajouter un second disque (peu importe la taille pour cet exercice). Redémarrez la VM, vérifiez que le disque est bien présent. Puis, répétez les questions 2 et 3 sur ce nouveau disque.
 
