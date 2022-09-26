@@ -118,9 +118,17 @@ User@localhost:~$ sudo pvdisplay
 
 ## 4. A l’aide de la commande vgcreate, créez un groupe de volumes, qui pour l’instant ne contiendra que le volume physique créé à l’étape précédente. Vérifiez à l’aide de la commande vgdisplay
 
-sudo vgcreate VG_new /dev/sdb1
+D'apres le man , la commande `vgcreate` creer des groupes de volumes
+
+```console
+User@localhost:~$ sudo vgcreate VG_new /dev/sdb1
+```
+
+![](/TP5/IMG_9.png)
 
 ## 5. Créez un volume logique appelé lvData occupant l’intégralité de l’espace disque disponible.
+
+
 
 ## 6. Dans ce volume logique, créez une partition que vous formaterez en ext4, puis procédez comme dans l’exercice 1 pour qu’elle soit montée automatiquement, au démarrage de la machine, dans /data.
 
