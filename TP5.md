@@ -10,7 +10,7 @@
 
 ## 1. Dans l’interface de configuration de votre VM, créez un second disque dur, de 5 Go dynamiquement alloués ; puis démarrez la VM
 
-![](/TP5_IMG/IMG_1.png)
+![](/TP5/IMG_1.png)
 
 ## 2. Vérifiez que ce nouveau disque dur est bien détecté par le système
 
@@ -18,7 +18,7 @@
 User@localhost:~$ lsblk
 ```
 
-![](/TP5_IMG/IMG_2.png)
+![](/TP5/IMG_2.png)
 
 ## 3. Partitionnez ce disque en utilisant fdisk : créez une première partition de 2 Go de type Linux (n°83),et une seconde partition de 3 Go en NTFS (n°7)
 
@@ -26,7 +26,7 @@ User@localhost:~$ lsblk
 User@localhost:~$ sudo fdisk /dev/sdb
 ```
 
-![](/TP5_IMG/IMG_3.png)
+![](/TP5/IMG_3.png)
 
 ## 4. A ce stade, les partitions ont été créées, mais elles n’ont pas été formatées avec leur système de fichiers. A l’aide de la commande mkfs, formatez vos deux partitions ( pensez à consulter le manuel !)
 
@@ -35,7 +35,7 @@ User@localhost:~$ sudo mkfs /dev/sdb1
 User@localhost:~$ sudo mkfs.ntfs /dev/sdb2
 ```
 
-![](/TP5_IMG/IMG_4.png)
+![](/TP5/IMG_4.png)
 
 ## 5. Pourquoi la commande df -T, qui affiche le type de système de fichier des partitions, ne fonctionne-telle pas sur notre disque ?
 
@@ -51,7 +51,7 @@ On ajoute les deux lignes suivantes au fichier `/etc/fstab`
 `/dev/sdb1 /data ext4 defaults 0 0`
 `/dev/sdb2 /win ntfs defaults 0 0`
 
-![](/TP5_IMG/IMG_5.png)
+![](/TP5/IMG_5.png)
 
 ## 7. Utilisez la commande mount puis redémarrez votre VM pour valider la configuration
 
