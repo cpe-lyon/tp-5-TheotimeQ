@@ -128,6 +128,24 @@ User@localhost:~$ sudo vgcreate VG_new /dev/sdb1
 
 ## 5. Créez un volume logique appelé lvData occupant l’intégralité de l’espace disque disponible.
 
+On creer le volume logique qui prends tout l'espace disponible :
+
+```console
+User@localhost:~$ sudo lvcreate -l 100%FREE VG_new -n lvData
+User@localhost:~$ sudo lvscan
+```
+
+![](/TP5/IMG_10.png)
+
+On verifie avec : 
+
+
+```console
+User@localhost:~$ sudo lvdisplay
+User@localhost:~$ sudo lvscan
+```
+
+![](/TP5/IMG_11.png)
 
 
 ## 6. Dans ce volume logique, créez une partition que vous formaterez en ext4, puis procédez comme dans l’exercice 1 pour qu’elle soit montée automatiquement, au démarrage de la machine, dans /data.
